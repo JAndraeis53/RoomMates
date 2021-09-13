@@ -90,17 +90,17 @@ namespace Roommates
                         break;
 
                     case "Delete a room":
-                        List<Room> roomOptions = roomRepo.GetAll();
-                        foreach (Room r in roomOptions)
+                        List<Room> roomOp = roomRepo.GetAll();
+                        foreach (Room r in roomOp)
                         {
                             Console.WriteLine($"{r.Id} - {r.Name} Max Occupancy({r.MaxOccupancy})");
                         }
 
                         Console.Write("Which room would you like to delete? ");
-                        int selectedRoomId = int.Parse(Console.ReadLine());
-                        Room selectedRoom = roomOptions.FirstOrDefault(r => r.Id == selectedRoomId);
+                        int selectedRId = int.Parse(Console.ReadLine());
+                        Room selectedR = roomOp.FirstOrDefault(r => r.Id == selectedRId);
 
-                        roomRepo.Delete(id);
+                        roomRepo.Delete(selectedRId);
 
                         Console.WriteLine("Room has been successfully deleted");
                         Console.Write("Press any key to continue");
